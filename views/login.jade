@@ -1,0 +1,13 @@
+extends layout
+
+block mainContent
+
+    form.form-signin(action='/login',method='post')
+        h2.form-signin-heading ICONUU
+        - if (message != '')
+            .alert
+                button.close(type='button',data-dismiss='alert') x
+                .strong= message        
+        input(type="text",name="username",placeholder='Your Name')
+        input(type="password",name="password",placeholder='Your Secret')
+        input.btn.btn-primary(type="submit",value="Log In")

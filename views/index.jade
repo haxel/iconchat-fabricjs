@@ -1,0 +1,41 @@
+extends layout
+
+block mainContent
+    #messagebox
+    #maincontent
+        canvas(id='main')
+    #tools.fileupload-buttonbar
+        .btn.draw-btn enter drawing mode
+        .btn.delete-btn delete from canvas
+        .btn.send-btn send to others
+        .btn.btn-success.fileinput-button
+            i.icon-plus.icon-white
+            span click to add files or drop files here
+                input.add-btn(type="file",name="files[]",multiple)
+    #imagetools.modal.hide
+        .modal-header
+            button.close(type='button',data-dismiss='modal') x
+            h3#imagetoolsLabel imagetools
+        .modal-body
+            div.source Source
+                p min
+                input.min_input(type='range',min='0',max='255',value='0')
+                p max
+                input.max_input(type='range',min='0',max='255',value='255')
+            div.target Target
+                p min
+                input.min_output(type='range',min='0',max='255',value='0')
+                p max
+                input.max_output(type='range',min='0',max='255',value='255')
+            p Gamma
+            input.gamma(type='range',min='0.10',max='10',step ="0.1",value='1')
+            h2 Blur
+            input.blur(type='range',min='1',max='10',value='3')
+            h2 Threshold
+            input.threshold(type='range',min='0',max='255',value='127')
+
+        .modal-footer
+            button.btn(type='button',data-dismiss='modal') Close
+            button.btn-primary(type='button',data-dismiss='modal') Apply Changes
+
+    #console

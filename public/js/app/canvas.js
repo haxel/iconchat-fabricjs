@@ -7,7 +7,11 @@ define(["jquery","fabric","highpass_filter"],function ($,fabric) {
     });
 
     var canvas = new fabric.Canvas('main');
+
+
     canvas.freeDrawingLineWidth = 6;
+        canvas.freeDrawingColor = 'rgb(255, 255, 255)';
+
     var img_options = {
                     threshold : 128,
                     radius : 8,
@@ -67,6 +71,10 @@ define(["jquery","fabric","highpass_filter"],function ($,fabric) {
         addSVG : function(filename,callback) {
             fabric.loadSVGFromURL(filename, function(objects,options) { 
                 var loadedObject;
+                objects.forEach(function(o) {
+                    o.stroke = '#ffffff';
+                    o.fill = '#000000'
+                })
                  if (objects.length > 1) {
                     loadedObject = new fabric.PathGroup(objects, options);
                 } else {

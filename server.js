@@ -1,11 +1,9 @@
 var express = require('express')
     util = require('util'),
-    uuid = require('node-uuid'),
     fabric = require('fabric').fabric,
     formidable = require('formidable'),
     http = require('http'),
     fs = require('fs'),
-    path = require('path'),
     passport = require('passport'),
     memstore = new express.session.MemoryStore(),
     LocalStrategy = require('passport-local').Strategy,
@@ -66,7 +64,7 @@ passport.deserializeUser(function(username, done) {
 
 server.listen(settings.node_port);
 
-app.configure(function(){   
+app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -79,7 +77,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(__dirname + '/public'));
   app.use(express.errorHandler());
 });
 
@@ -137,7 +135,9 @@ app.post(
 
     form.on('file',function(name,file) {
       var cleanup = function(){
+        try {
         fs.unlinkSync(file.path);
+        } catch(e) {}
       };
       var is = fs.createReadStream(file.path)
       var os = fs.createWriteStream(settings.uploadpath + file.name);

@@ -223,7 +223,7 @@ fabric.Image.filters.Highpass = fabric.util.createClass( {
         av = (r_sum + g_sum + b_sum) / 3;
         // tonwertkorrektur 
         av = (minOutput+(maxOutput-minOutput)*Pow(Min(Max((av/255)-minInput, 0.0) /  (maxInput-minInput), 1.0),(1/this.gamma)))*255;
-        src[i] = src[i+1] = src[i+2] = av;
+        src[i] = src[i+1] = src[i+2] = 255 //av;
         // threshold anwenden
         src[i+3] = (av > this.threshold) ? 0 : 255;
     }

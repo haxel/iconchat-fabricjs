@@ -4,6 +4,7 @@ define(["jquery"],function ($) {
 		drawing : $('#tools .draw-btn').text('enter drawing mode'),
 		delete : $('#tools .delete-btn').text('delete').hide(),
 		fileupload : $('#tools .add-btn'),
+		sprite : $('#tools .sprite-btn').text('add sprite'),
 		send : $('#tools .send-btn').text('send').hide(),
 	}, $_toolbox = $('#tools') ,$_imagetools = $('#imagetools');
 
@@ -76,6 +77,9 @@ define(["jquery"],function ($) {
 			});
 			_tools.delete.click(function() {
 				cmd.delete();
+			});
+			_tools.sprite.click(function(){
+				cmd.sprite();
 			});
 
 			_tools.drawing.click(function() {

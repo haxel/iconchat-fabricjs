@@ -21,6 +21,9 @@ define(["jquery","fabric","app/canvas","app/uploader","app/synchronize","app/ui"
         delete : function() {
             return canvas.deleteItem();
         },
+        sprite : function() {
+            return canvas.addSprite();
+        },
         drawing : function() {
             return canvas.toggleDrawing();
         },

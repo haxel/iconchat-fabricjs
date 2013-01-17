@@ -4,10 +4,11 @@ require.config({
     paths: {
         jquery: 'jquery-1.8.2.min',
         bootstrap: 'bootstrap.min',
-        socketio: window.location.origin + '/socket.io/socket.io',
+        socketio: window.location.href + 'socket.io/socket.io',
         ptsans: 'ptsans.font',
         highpass_filter : 'fabric.filters.highpass',
         convolution_filter : 'fabric.filters.convolution',
+        spritesheet : 'fabric.SpriteSheet.class',
         fabric: 'fabric',
         //fileuploader: 'fileuploader',
         fileuploader : 'jquery.fileupload',
@@ -26,6 +27,7 @@ require.config({
         ptsans : ['fabric'],
         highpass_filter : ['fabric'],
         convolution_filter : ['fabric'],
+        spritesheet : ['fabric'],
         fabric: {
             exports: 'fabric'
         },
@@ -36,6 +38,6 @@ require.config({
 });
 
 require(["app/boot"], function(app) {
-    console.log(app);
+    //console.log(app);
 });
 
